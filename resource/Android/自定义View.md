@@ -1,4 +1,5 @@
 **前言**
+
 看到大神们写的自定义View很精彩，借此机会温习Android知识点，
 决定一步一步从基础学习总结自定义View，来提示对自定义View的理解
 
@@ -17,6 +18,8 @@ import android.view.View;
  */
 
 public class MyView extends View{
+    //...
+    
     //构造方法
     public MyView(Context context) {
         super(context);
@@ -25,6 +28,8 @@ public class MyView extends View{
     public MyView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
+    
+    //...
 }
 ````
 ## 1.1 onMeasure
@@ -51,17 +56,20 @@ import android.view.View;
  */
 
 public class MyView extends View{
+    //...
     
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
+    
+    //...
 }
 
 ````
 该方法有两个`int`类型参数`widthMeasureSpec`和`heightMeasureSpec`分别是什么意思？
 从字面上看起来很像width和height，是的，没错，确实是包含宽度和高度的信息。
-它还包含测量模式，一个int整数里面放了测量模式和尺寸大小。那是怎么放的呢？
+它还包含测量模式，一个int整数里面放了`测量模式`和`尺寸大小`。那是怎么放的呢？
 咱们知道，当设置宽高时有三个选择：`wrap_content`、`match_parent`以及`指定固定大小`，
 而测量模式也有三种：`UNSPECIFIED`,`EXACTLY`,`AT_MOST`这三种模式并不是一一对应。
 测量模式无非就这三种情况，采用二进制，只需要使用2个bit就可以做到，因为2bit取值范围是\[0,3]
@@ -69,7 +77,30 @@ public class MyView extends View{
 数据占用32个bit，而Google的实现是，将int数据的前2个bit用于区分不同的布局模式，
 后面的30个bit存放的是尺寸的数据。
 
-那么
+那我们如何从int数据中获取`测量模式`和`尺寸大小`呢？
+是不是每次都需要做一次移位`<<`和取且`&`操作呢？其实不必这样操作，Android
+内置类MeasureSpec已经帮我们写好了，只需要调用以下方法就可以拿到了：
+````java
+import android.view.View;
+
+/**
+ * 作者： JoinYon on 2018/6/13.
+ * 邮箱：2816886869@qq.com
+ */
+
+public class MyView extends View{
+    
+    //...
+    
+   int widthMode=MesureSpec.getMode(widthMeasureSpec); 
+   int widthSize=MesureSpec.getSize(widthMeasureSpec);
+   
+   //...
+}
+
+````
+
+
 
 ## 1.2 重写onMeasure方法
 
