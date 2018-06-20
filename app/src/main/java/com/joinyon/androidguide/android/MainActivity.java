@@ -1,4 +1,4 @@
-package com.joinyon.androidguide;
+package com.joinyon.androidguide.android;
 
 import android.Manifest;
 import android.content.Intent;
@@ -16,6 +16,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.joinyon.androidguide.R;
 
 import java.io.File;
 import java.io.FileOutputStream;

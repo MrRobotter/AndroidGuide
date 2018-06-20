@@ -15,10 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".android.MainActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".NotifyActivity">
+        <activity android:name=".android.NotifyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

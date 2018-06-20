@@ -1,4 +1,4 @@
-package com.joinyon.androidguide;
+package com.joinyon.androidguide.android;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -13,6 +13,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RemoteViews;
 
+import com.joinyon.androidguide.R;
+
+import static android.app.Notification.VISIBILITY_PUBLIC;
+
 public class NotifyActivity extends AppCompatActivity {
 
     @Override
@@ -21,7 +25,36 @@ public class NotifyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notify);
     }
 
-    public void hide(View view) {
+    /**
+     * 锁屏通知
+     * @param view
+     */
+    public void close(View view) {
+        // 第一步 获取NotificationManager实例
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://joinyon.top/"));
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        // 第二步 实例Notification对象
+        Notification notification = new NotificationCompat.Builder(this, "0")
+                .setContentText("锁屏通知内容")
+                .setContentTitle("锁屏通知标题")
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                //.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_foreground))
+                //.setWhen(System.currentTimeMillis())
+                .setContentIntent(pendingIntent)//点击跳转
+                .setAutoCancel(true)//点击通知头自动取消
+                .setTicker("您有新的锁屏通知了！")
+                .setSound(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.iphone_ringtone))// 声音
+                .setLights(0xff00ff00, 300, 1000)// LED
+                //.setVibrate()// 震动
+                //.setDefaults(NotificationCompat.DEFAULT_ALL)//设置铃声及震动效果
+                // 第三步 setVisibility
+                .setVisibility(VISIBILITY_PUBLIC)
+                .build();
+        //第四步 发送通知
+        notificationManager.notify(1, notification);
     }
 
     /**
@@ -48,7 +81,7 @@ public class NotifyActivity extends AppCompatActivity {
                 .setAutoCancel(true)//点击通知头自动取消
                 .setTicker("您有新的普通通知了！")
                 .setSound(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.iphone_ringtone))// 声音
-                //.setLights()// LED
+                .setLights(0xff00ff00, 300, 1000)// LED
                 //.setVibrate()// 震动
                 //.setDefaults(NotificationCompat.DEFAULT_ALL)//设置铃声及震动效果
                 .build();
@@ -58,6 +91,11 @@ public class NotifyActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 悬挂式通知
+     *
+     * @param view
+     */
     public void hang(View view) {
         // 第一步 获取NotificationManager实例
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -80,6 +118,11 @@ public class NotifyActivity extends AppCompatActivity {
         notificationManager.notify(1, notification);
     }
 
+    /**
+     * 折叠式通知
+     *
+     * @param view
+     */
     public void collapsed(View view) {
         // 第一步 获取NotificationManager实例
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

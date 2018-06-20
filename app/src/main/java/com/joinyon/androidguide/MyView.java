@@ -19,4 +19,9 @@ public class MyView extends View{
     public MyView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
 }

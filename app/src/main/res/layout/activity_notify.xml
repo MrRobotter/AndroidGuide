@@ -5,14 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.joinyon.androidguide.NotifyActivity">
-
-
-    <Button
-        android:text="取消通知"
-        android:onClick="hide"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    tools:context="com.joinyon.androidguide.android.NotifyActivity">
 
     <Button
         android:text="普通通知"
@@ -28,6 +21,11 @@
     <Button
         android:text="折叠式通知"
         android:onClick="collapsed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="锁屏通知"
+        android:onClick="close"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
