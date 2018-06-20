@@ -7,16 +7,27 @@
     android:orientation="vertical"
     tools:context="com.joinyon.androidguide.NotifyActivity">
 
-    <Button
-        android:onClick="show"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="显示通知" />
-
 
     <Button
         android:text="取消通知"
         android:onClick="hide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="普通通知"
+        android:onClick="normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="悬挂式通知"
+        android:onClick="hang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="折叠式通知"
+        android:onClick="collapsed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
