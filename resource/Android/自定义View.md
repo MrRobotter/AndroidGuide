@@ -241,7 +241,7 @@ public class MyView extends View {
 
 ````
 **注意：** 画笔化的只是在画板上画，整个背景色还是有的.
- ![]()
+ ![]( https://github.com/MrRobotter/AndroidGuide/tree/master/resource/image/自定义View-1.jpg )
 
 这里有坑使用当我们使用`marginTop `时发现不是一个圆形了。
 
