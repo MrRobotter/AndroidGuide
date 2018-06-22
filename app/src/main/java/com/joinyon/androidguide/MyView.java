@@ -1,6 +1,7 @@
 package com.joinyon.androidguide;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -15,6 +16,7 @@ import android.view.View;
 
 public class MyView extends View {
     Paint paint = new Paint();
+    private int defaultSize;
 
     public MyView(Context context) {
         super(context);
@@ -22,6 +24,15 @@ public class MyView extends View {
 
     public MyView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        //第二个参数是我们在styles.xml文件中的<declare-styleable>标签
+        //即属性集合的标签，在R文件中名称为R.styleable+name
+
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyView);
+
+        //第一个参数为属性集合里面的属性，R文件名称：R.styleable_属性集合名+下划线+属性名称
+        defaultSize = typedArray.getDimensionPixelSize(R.styleable.MyView_default_size, 100);
+
+        typedArray.recycle();//最后记得将TypedArray对象释放掉；
     }
 
     @Override
@@ -75,8 +86,10 @@ public class MyView extends View {
         int r = getMeasuredWidth() / 2;//我们已经将宽高设置相等了，所以随便选择一个。
 
         // 第二步:确定圆心坐标
-        int centerX = getLeft() + r;//圆心的横坐标为当前View的左边起始位置+半径。
-        int centerY = getTop() + r; //圆心的纵坐标为当前View的顶部起始点+半径。
+//        int centerX = getLeft() + r;//圆心的横坐标为当前View的左边起始位置+半径。
+//        int centerY = getTop() + r; //圆心的纵坐标为当前View的顶部起始点+半径。
+        int centerX = r;
+        int centerY = r;
 
         // 第三步:实例化画笔对象，并设置画笔属性
 

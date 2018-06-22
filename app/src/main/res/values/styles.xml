@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--name为声明的"属性集合名"，可以随便取，建议设置为跟我们自定义View的名称一样-->
+    <declare-styleable name="MyView">
+        <!--声明我们的属性，名称为default_size，取值类型为尺寸类型（dp，px等）-->
+        <attr name="default_size" format="dimension" />
+
+    </declare-styleable>
+
 </resources>

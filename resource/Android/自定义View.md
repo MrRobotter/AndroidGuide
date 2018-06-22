@@ -223,7 +223,7 @@ public class MyView extends View {
    
            // 第二步:确定圆心坐标
            int centerX = getLeft() + r;//圆心的横坐标为当前View的左边起始位置+半径。
-           int centerY = getTop() + r; //圆心的纵坐标为当前View的顶部起始点+半径。
+           int centerY = getTop() + r; //圆心的纵坐标为当前View的顶部起始点+半径。? 待考究
    
            // 第三步:实例化画笔对象，并设置画笔属性
    
@@ -244,18 +244,337 @@ public class MyView extends View {
  ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/自定义View-1.jpg )
 
 这里有坑使用当我们使用`marginTop `时发现不是一个圆形了。
+当View在xml中设置margin属性时就会出现不完整。
+````xml
+<com.joinyon.androidguide.MyView
+        android:layout_marginTop="30dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/colorAccent" />
+````
 
+效果如下：
+ ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/自定义View-2.jpg )
 
 
 ## 1.4 自定义布局属性
+ 我们使用的控件属性可以在xml中指定，比如颜色、大小等，所以我们还需要自定义属性让用户指定控件的一些属性。如果自定义呢？
+ * 1. 首先我们需要在 `res/values/styles.xml`文件（没有的话自己新建）里声明一个我们自定义属性：
+ ````xml
+ <resources>
  
+     <!--name为声明的"属性集合名"，可以随便取，建议设置为跟我们自定义View的名称一样-->
+     <declare-styleable name="MyView">
+         <!--声明我们的属性，名称为default_size，取值类型为尺寸类型（dp，px等）-->
+         <attr name="default_size" format="dimension" />
+     </declare-styleable>
+ 
+ </resources>
+````
+* 2. 接下来就是在布局文件上引用我们的自定义属性了：
+````xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hc="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.joinyon.androidguide.android.ViewActivity">
+
+    <com.joinyon.androidguide.MyView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/colorAccent"
+        hc:default_size="200dp" />
+</LinearLayout>
+````
+ **注意:** 需要在跟标签 `LinearLayout`里面设置命名空间，命名空间名称可以随便取，
+比如 `hc`，命名空间后面的取值是固定的：` "http://schemas.android.com/apk/res-auto" `
+* 3. 最后就是在我们的自定义的View里面把我们自定义属性的值取出来，
+在构造方法中一个AttributeSet对象，就是靠这个对象把布局里面的属性取出来的：
+
+
+````java
+import android.view.View;
+
+/**
+ * 作者： JoinYon on 2018/6/13.
+ * 邮箱：2816886869@qq.com
+ */
+
+public class MyView extends View {
+    
+
+   //...
+
+     
+        public MyView(Context context, @Nullable AttributeSet attrs) {
+               super(context, attrs);
+               //第二个参数是我们在styles.xml文件中的<declare-styleable>标签
+               //即属性集合的标签，在R文件中名称为R.styleable+name
+       
+               TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyView);
+       
+               //第一个参数为属性集合里面的属性，R文件名称：R.styleable_属性集合名+下划线+属性名称
+               defaultSize = typedArray.getDimensionPixelSize(R.styleable.MyView_default_size, 100);
+       
+               typedArray.recycle();//最后记得将TypedArray对象释放掉；
+           } 
+    
+       
+    //...
+    
+}
+
+````
+最后完整代码详见[MyView.java]()文件
 
 # 2 自定义ViewGroup
+相比较自定义View，自定义ViewGroup要复杂的多，因为它不仅要管好自己的属性，
+还要兼顾他的子View，如果把自定义View比作员工的话，那么自定义ViewGroup就
+相当于管理者，不仅仅要管理好自己的工作，还要起到统筹协调手下员工的功能。ViewGroup
+是个View的容器，它盛放child view并负责把child view 放入指定的位置。
+所以有以下设计思路：
+* 首先，需要知道各个子View的大小，只有知道了子View的大小，我们才知道
+当前的ViewGroup该设置多大才能装下所有的子View。
+
+* 根据子View的大小，已经我们的ViewGroup要实现的功能，决定出ViewGroup的大小。
+
+* ViewGroup和子View的大小算出来了之后，接下来就是去摆放了，具体怎么摆放，
+这得根据定制需求去摆放了，比如：让子View按照垂直顺序一个一个摆放，或者按照先后顺序一个一个叠放上去，看具体需求决定。
+
+* 已经知道怎么摆放也不行，决定怎么摆放就是相当于把已有的空间 "分割"成大大小小的空间，每一个空间对应一个子View，
+我们接下来把子View对号入座就行了，把子View摆到他们该放的地方。
+
+有了这样的思路，我们可以开始一个简单的ViewGroup的设计了，接下来实现一个具体的案例：
+将子View按从上到下垂直顺序一个挨着一个摆放，即模仿实现LinearLayout的垂直布局。
 
 ## 2.1 重写onMeasure方法
+按照我们的设计思路首先要重写onMeasure()方法，实现测量子View大小以及设定ViewGroup的大小，由于我们实现的是模仿
+LinearLayout的垂直布局，所以有以下两种情况：
+* 没有子View的情况，则ViewGroup没有存在的意义，所以宽和高都为0；
+* 如果存在子View，则有以下四种情况：
+    * 设置ViewGroup宽高都是包裹内容：(ViewGroup的高度为所有子View的相加，ViewGroup的宽度为子View中宽度最大的。)
+    * 只设置了ViewGroup高度是包裹内容，指定了宽度：（宽度设置为ViewGroup自己的测量宽度，高度为所有子View的总和。）
+    * 只设置了ViewGroup宽度是包裹内容，指定了高度：（宽度是子View的最大值，高度是ViewGroup的测量值。）
+    * 指定了宽度和高度：（宽度，高度均为ViewGroup的测量值）
+    
+**获取子View中宽度最大值的方法：**  
+  ````java
+  import android.view.ViewGroup;
+  
+  /**
+   * 作者： JoinYon on 2018/6/21.
+   * 邮箱：2816886869@qq.com
+   */
+  
+  public class MyViewGroup extends ViewGroup {
+      
+      //...
+  
+      /**
+       * 获取子View中宽度最大的值
+       *
+       * @return
+       */
+      private int getMaxChildWidth() {
+          int childCount = getChildCount();
+          int maxWidth = 0;
+          for (int i = 0; i < childCount; i++) {
+              View childView = getChildAt(i);
+              if (childView.getMeasuredWidth() > maxWidth) {
+                  maxWidth = childView.getMeasuredWidth();
+              }
+          }
+          return maxWidth;
+      }
+      
+      //...
+      
+  }
 
+  ````
+   **获取所有子View的高度相加方法：** 
+    
+````java
+     import android.view.ViewGroup;
+     
+     /**
+      * 作者： JoinYon on 2018/6/21.
+      * 邮箱：2816886869@qq.com
+      */
+     
+     public class MyViewGroup extends ViewGroup {
+         
+         //...
+   
+          /**
+              * 获取所有子View的高度相加
+              *
+              * @return
+              */
+             private int getTotalHeight() {
+                 int childCount = getChildCount();
+                 int height = 0;
+                 for (int i = 0; i < childCount; i++) {
+                     View childView = getChildAt(i);
+                     height += childView.getMeasuredHeight();
+                 }
+                 return height;
+             }
+         
+         //...
+         
+     }
+  
+````
+**重写onMeasure方法：**
+````java
+     import android.view.ViewGroup;
+     
+     /**
+      * 作者： JoinYon on 2018/6/21.
+      * 邮箱：2816886869@qq.com
+      */
+     
+     public class MyViewGroup extends ViewGroup {
+         
+         //...
+   
+         @Override
+             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+                 super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                 // 将所有的子View进行测量，这会触发每个子View的onMeasure()方法。
+                 //注意要与measureChild区分，measureChild是对单个view进行测量。
+                 measureChildren(widthMeasureSpec, heightMeasureSpec);
+         
+                 int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+                 int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+         
+                 int heightMode = MeasureSpec.getMode(widthMeasureSpec);
+                 int heightSize = MeasureSpec.getSize(widthMeasureSpec);
+         
+                 int childCount = getChildCount();
+         
+                 if (childCount == 0) {//如果没有子View，当前的ViewGroup没有存在意义，不用占用空间
+                     setMeasuredDimension(0, 0);
+                 } else {
+         
+                     if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST) {// 宽高都是包裹内容
+                         //高度为所有子View的相加，宽度为子View中宽度最大的。
+                         int height = getTotalHeight();
+                         int width = getMaxChildWidth();
+                         setMeasuredDimension(width, height);
+         
+                     } else if (heightMode == MeasureSpec.AT_MOST) {// 如果只有高度是包裹内容，宽度是
+                         //宽度设置为ViewGroup自己的测量宽度，高度为所有子View的总和。
+                         setMeasuredDimension(widthSize, getTotalHeight());
+         
+                     } else if (widthMode == MeasureSpec.AT_MOST) {//如果只有宽度是内容包裹，则宽度是子View的最大值
+                         //高度是ViewGroup的测量值。
+                         setMeasuredDimension(getMaxChildWidth(), heightSize);
+                     } else {// 指定了宽度和高度
+                             // 宽度，高度均为ViewGroup的测量值
+                         setMeasuredDimension(widthSize, heightSize);
+                     }
+                     
+                 }
+         
+             }
+
+         
+         //...
+         
+     }
+  
+````
+以上就是ViewGroup将子View测量好了，也把自己的尺寸测量好了，接下来就是考虑如何摆放了。
 ## 2.2 要实现的功能
-
+要实现的功能就是从上到下垂直摆放
 ## 2.3 子view的摆放规则
+具体的操作
 
 ## 2.4 摆放子view
+
+重写onLayout方法：
+````java
+     import android.view.ViewGroup;
+     
+     /**
+      * 作者： JoinYon on 2018/6/21.
+      * 邮箱：2816886869@qq.com
+      */
+     
+     public class MyViewGroup extends ViewGroup {
+         
+         //...
+   
+        @Override
+        protected void onLayout(boolean changed, int l, int t, int r, int b) {
+            int count = getChildCount();
+            //设置当前的高度
+            int currentHeight = t;
+            // 将子View摆放到合适的位置。
+            for (int i = 0; i < count; i++) {
+                View childView = getChildAt(i);
+                int height = childView.getMeasuredHeight();
+                int width = childView.getMeasuredWidth();
+                //摆放子View，参数分别是子View矩形区域的左、上、右、下。
+                childView.layout(l, currentHeight, l + width, currentHeight + height);
+                currentHeight += height;
+            }
+        }
+         
+         //...
+         
+     }
+  
+````
+
+接下来我们可以测试了
+
+````xml
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hc="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.joinyon.androidguide.android.ViewActivity">
+    <com.joinyon.androidguide.android.MyViewGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00ff00">
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="按钮"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:text="sssss"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <Button
+            android:layout_width="98dp"
+            android:layout_height="wrap_content" />
+    </com.joinyon.androidguide.android.MyViewGroup>
+</LinearLayout>
+
+````
+
+效果如下图：
+![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/自定义ViewGroup-1.jpg )
