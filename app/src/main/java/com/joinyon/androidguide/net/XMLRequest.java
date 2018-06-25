@@ -14,11 +14,9 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 
 /**
- *
  * 作者： JoinYon on 2018/6/23.
  * 邮箱：2816886869@qq.com
  * 自定义Request，接收xml数据
- *
  */
 
 public class XMLRequest extends Request<XmlPullParser> {
@@ -31,13 +29,11 @@ public class XMLRequest extends Request<XmlPullParser> {
     }
 
     /**
-     *
      * 默认为GET请求，没写请求方式则为GET
      *
      * @param url
      * @param mListener
      * @param errorListener
-     *
      */
     public XMLRequest(String url, Response.Listener<XmlPullParser> mListener, Response.ErrorListener errorListener) {
         this(Method.GET, url, mListener, errorListener);
@@ -46,7 +42,8 @@ public class XMLRequest extends Request<XmlPullParser> {
     @Override
     protected Response<XmlPullParser> parseNetworkResponse(NetworkResponse networkResponse) {
         try {
-            String xmlString = new String(networkResponse.data, HttpHeaderParser.parseCharset(networkResponse.headers));
+            String xmlString = new String(networkResponse.data, "utf-8");//此处第二个参数是编码方式，
+            // 设置为HttpHeaderParser.parseCharset(networkResponse.headers)是使用服务器编码默认，此处强制 utf-8 解决乱码问题
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             XmlPullParser xmlPullParser = factory.newPullParser();
             xmlPullParser.setInput(new StringReader(xmlString));

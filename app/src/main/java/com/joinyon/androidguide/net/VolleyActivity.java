@@ -66,6 +66,7 @@ public class VolleyActivity extends AppCompatActivity {
         //imageLoader();
         //networkImageView();
         xmlRequest();
+        //gsonRequest();
     }
 
     /**
@@ -220,46 +221,46 @@ public class VolleyActivity extends AppCompatActivity {
 
     /**
      * <china dn="nay">
-     <city quName="é»é¾æ±" pyName="heilongjiang" cityname="åå°æ»¨" state1="1" state2="1" stateDetailed="å¤äº" tem1="14" tem2="26" windState="è¥¿é£å¾®é£çº§"/>
-     <city quName="åæ" pyName="jilin" cityname="é¿æ¥" state1="0" state2="0" stateDetailed="æ´" tem1="16" tem2="29" windState="å¾®é£"/>
-     <city quName="è¾½å®" pyName="liaoning" cityname="æ²é³" state1="0" state2="0" stateDetailed="æ´" tem1="19" tem2="33" windState="ä¸åé£å¾®é£çº§"/>
-     <city quName="æµ·å" pyName="hainan" cityname="æµ·å£" state1="1" state2="4" stateDetailed="å¤äºè½¬é·éµé¨" tem1="27" tem2="34" windState="å¾®é£"/>
-     <city quName="åèå¤" pyName="neimenggu" cityname="å¼åæµ©ç¹" state1="2" state2="7" stateDetailed="é´è½¬å°é¨" tem1="19" tem2="28" windState="è¥¿åé£3-4çº§"/>
-     <city quName="æ°ç" pyName="xinjiang" cityname="ä¹é²æ¨é½" state1="0" state2="0" stateDetailed="æ´" tem1="19" tem2="32" windState="å¾®é£"/>
-     <city quName="è¥¿è" pyName="xizang" cityname="æè¨" state1="1" state2="3" stateDetailed="å¤äºè½¬éµé¨" tem1="14" tem2="28" windState="å¾®é£"/>
-     <city quName="éæµ·" pyName="qinghai" cityname="è¥¿å®" state1="3" state2="4" stateDetailed="éµé¨è½¬é·éµé¨" tem1="15" tem2="26" windState="å¾®é£"/>
-     <city quName="å®å¤" pyName="ningxia" cityname="é¶å·" state1="2" state2="7" stateDetailed="é´è½¬å°é¨" tem1="21" tem2="27" windState="å¾®é£"/>
-     <city quName="çè" pyName="gansu" cityname="å°å·" state1="3" state2="3" stateDetailed="éµé¨" tem1="20" tem2="29" windState="å¾®é£"/>
-     <city quName="æ²³å" pyName="hebei" cityname="ç³å®¶åº" state1="0" state2="1" stateDetailed="æ´è½¬å¤äº" tem1="25" tem2="37" windState="å¾®é£è½¬åé£å¾®é£çº§"/>
-     <city quName="æ²³å" pyName="henan" cityname="éå·" state1="1" state2="1" stateDetailed="å¤äº" tem1="22" tem2="34" windState="åé£å¾®é£çº§"/>
-     <city quName="æ¹å" pyName="hubei" cityname="æ­¦æ±" state1="4" state2="4" stateDetailed="é·éµé¨" tem1="24" tem2="32" windState="ä¸åé£è½¬åé£3-4çº§"/>
-     <city quName="æ¹å" pyName="hunan" cityname="é¿æ²" state1="1" state2="1" stateDetailed="å¤äº" tem1="26" tem2="34" windState="ä¸åé£è½¬åé£å¾®é£çº§"/>
-     <city quName="å±±ä¸" pyName="shandong" cityname="æµå" state1="0" state2="0" stateDetailed="æ´" tem1="26" tem2="35" windState="åé£3-4çº§"/>
-     <city quName="æ±è" pyName="jiangsu" cityname="åäº¬" state1="2" state2="4" stateDetailed="é´è½¬é·éµé¨" tem1="21" tem2="31" windState="ä¸é£è½¬ä¸åé£3-4çº§"/>
-     <city quName="å®å¾½" pyName="anhui" cityname="åè¥" state1="1" state2="7" stateDetailed="å¤äºè½¬å°é¨" tem1="21" tem2="29" windState="ä¸é£å¾®é£çº§è½¬ä¸åé£3-4çº§"/>
-     <city quName="å±±è¥¿" pyName="shanxi" cityname="å¤ªå" state1="0" state2="0" stateDetailed="æ´" tem1="19" tem2="35" windState="åé£è½¬ä¸åé£å¾®é£çº§"/>
-     <city quName="éè¥¿" pyName="sanxi" cityname="è¥¿å®" state1="0" state2="1" stateDetailed="æ´è½¬å¤äº" tem1="21" tem2="36" windState="ä¸åé£3-4çº§è½¬å¾®é£çº§"/>
-     <city quName="åå·" pyName="sichuan" cityname="æé½" state1="8" state2="7" stateDetailed="ä¸­é¨è½¬å°é¨" tem1="22" tem2="29" windState="å¾®é£"/>
-     <city quName="äºå" pyName="yunnan" cityname="ææ" state1="8" state2="8" stateDetailed="ä¸­é¨" tem1="17" tem2="24" windState="å¾®é£"/>
-     <city quName="è´µå·" pyName="guizhou" cityname="è´µé³" state1="2" state2="3" stateDetailed="é´è½¬éµé¨" tem1="20" tem2="25" windState="åé£å¾®é£çº§"/>
-     <city quName="æµæ±" pyName="zhejiang" cityname="æ­å·" state1="3" state2="3" stateDetailed="éµé¨" tem1="21" tem2="28" windState="ä¸é£å¾®é£çº§"/>
-     <city quName="ç¦å»º" pyName="fujian" cityname="ç¦å·" state1="1" state2="4" stateDetailed="å¤äºè½¬é·éµé¨" tem1="25" tem2="32" windState="å¾®é£"/>
-     <city quName="æ±è¥¿" pyName="jiangxi" cityname="åæ" state1="2" state2="2" stateDetailed="é´" tem1="26" tem2="33" windState="åé£è½¬è¥¿åé£å¾®é£çº§"/>
-     <city quName="å¹¿ä¸" pyName="guangdong" cityname="å¹¿å·" state1="9" state2="9" stateDetailed="å¤§é¨" tem1="26" tem2="32" windState="ä¸åé£3-4çº§è½¬å¾®é£"/>
-     <city quName="å¹¿è¥¿" pyName="guangxi" cityname="åå®" state1="3" state2="3" stateDetailed="éµé¨" tem1="26" tem2="32" windState="åé£å¾®é£çº§"/>
-     <city quName="åäº¬" pyName="beijing" cityname="åäº¬" state1="0" state2="1" stateDetailed="æ´è½¬å¤äº" tem1="25" tem2="36" windState="è¥¿åé£å¾®é£çº§è½¬åé£3-4çº§"/>
-     <city quName="å¤©æ´¥" pyName="tianjin" cityname="å¤©æ´¥" state1="0" state2="1" stateDetailed="æ´è½¬å¤äº" tem1="27" tem2="36" windState="è¥¿åé£è½¬åé£3-4çº§"/>
-     <city quName="ä¸æµ·" pyName="shanghai" cityname="ä¸æµ·" state1="1" state2="1" stateDetailed="å¤äº" tem1="21" tem2="28" windState="ä¸åé£å¾®é£çº§è½¬3-4çº§"/>
-     <city quName="éåº" pyName="chongqing" cityname="éåº" state1="7" state2="7" stateDetailed="å°é¨" tem1="24" tem2="32" windState="å¾®é£"/>
-     <city quName="é¦æ¸¯" pyName="xianggang" cityname="é¦æ¸¯" state1="7" state2="1" stateDetailed="å°é¨è½¬å¤äº" tem1="27" tem2="31" windState="å¾®é£"/>
-     <city quName="æ¾³é¨" pyName="aomen" cityname="æ¾³é¨" state1="3" state2="3" stateDetailed="éµé¨" tem1="25" tem2="31" windState="åé£3-4çº§"/>
-     <city quName="å°æ¹¾" pyName="taiwan" cityname="å°å" state1="2" state2="7" stateDetailed="é´è½¬å°é¨" tem1="27" tem2="29" windState="ä¸åé£è½¬è¥¿åé£å¾®é£çº§"/>
-     <city quName="è¥¿æ²" pyName="xisha" cityname="è¥¿æ²" state1="4" state2="4" stateDetailed="é·éµé¨" tem1="25" tem2="29" windState="åé£4-5çº§è½¬3-4çº§"/>
-     <city quName="åæ²" pyName="nanshadao" cityname="åæ²" state1="3" state2="3" stateDetailed="éµé¨" tem1="27" tem2="28" windState="è¥¿åé£3-4çº§è½¬å¾®é£"/>
-     <city quName="éé±¼å²" pyName="diaoyudao" cityname="éé±¼å²" state1="7" state2="7" stateDetailed="å°é¨" tem1="25" tem2="27" windState="åé£5-6çº§è½¬4-5çº§"/>
-     </china>
-
-     乱码解决方案。。。
+     * <city quName="é»é¾æ±" pyName="heilongjiang" cityname="åå°æ»¨" state1="1" state2="1" stateDetailed="å¤äº" tem1="14" tem2="26" windState="è¥¿é£å¾®é£çº§"/>
+     * <city quName="åæ" pyName="jilin" cityname="é¿æ¥" state1="0" state2="0" stateDetailed="æ´" tem1="16" tem2="29" windState="å¾®é£"/>
+     * <city quName="è¾½å®" pyName="liaoning" cityname="æ²é³" state1="0" state2="0" stateDetailed="æ´" tem1="19" tem2="33" windState="ä¸åé£å¾®é£çº§"/>
+     * <city quName="æµ·å" pyName="hainan" cityname="æµ·å£" state1="1" state2="4" stateDetailed="å¤äºè½¬é·éµé¨" tem1="27" tem2="34" windState="å¾®é£"/>
+     * <city quName="åèå¤" pyName="neimenggu" cityname="å¼åæµ©ç¹" state1="2" state2="7" stateDetailed="é´è½¬å°é¨" tem1="19" tem2="28" windState="è¥¿åé£3-4çº§"/>
+     * <city quName="æ°ç" pyName="xinjiang" cityname="ä¹é²æ¨é½" state1="0" state2="0" stateDetailed="æ´" tem1="19" tem2="32" windState="å¾®é£"/>
+     * <city quName="è¥¿è" pyName="xizang" cityname="æè¨" state1="1" state2="3" stateDetailed="å¤äºè½¬éµé¨" tem1="14" tem2="28" windState="å¾®é£"/>
+     * <city quName="éæµ·" pyName="qinghai" cityname="è¥¿å®" state1="3" state2="4" stateDetailed="éµé¨è½¬é·éµé¨" tem1="15" tem2="26" windState="å¾®é£"/>
+     * <city quName="å®å¤" pyName="ningxia" cityname="é¶å·" state1="2" state2="7" stateDetailed="é´è½¬å°é¨" tem1="21" tem2="27" windState="å¾®é£"/>
+     * <city quName="çè" pyName="gansu" cityname="å°å·" state1="3" state2="3" stateDetailed="éµé¨" tem1="20" tem2="29" windState="å¾®é£"/>
+     * <city quName="æ²³å" pyName="hebei" cityname="ç³å®¶åº" state1="0" state2="1" stateDetailed="æ´è½¬å¤äº" tem1="25" tem2="37" windState="å¾®é£è½¬åé£å¾®é£çº§"/>
+     * <city quName="æ²³å" pyName="henan" cityname="éå·" state1="1" state2="1" stateDetailed="å¤äº" tem1="22" tem2="34" windState="åé£å¾®é£çº§"/>
+     * <city quName="æ¹å" pyName="hubei" cityname="æ­¦æ±" state1="4" state2="4" stateDetailed="é·éµé¨" tem1="24" tem2="32" windState="ä¸åé£è½¬åé£3-4çº§"/>
+     * <city quName="æ¹å" pyName="hunan" cityname="é¿æ²" state1="1" state2="1" stateDetailed="å¤äº" tem1="26" tem2="34" windState="ä¸åé£è½¬åé£å¾®é£çº§"/>
+     * <city quName="å±±ä¸" pyName="shandong" cityname="æµå" state1="0" state2="0" stateDetailed="æ´" tem1="26" tem2="35" windState="åé£3-4çº§"/>
+     * <city quName="æ±è" pyName="jiangsu" cityname="åäº¬" state1="2" state2="4" stateDetailed="é´è½¬é·éµé¨" tem1="21" tem2="31" windState="ä¸é£è½¬ä¸åé£3-4çº§"/>
+     * <city quName="å®å¾½" pyName="anhui" cityname="åè¥" state1="1" state2="7" stateDetailed="å¤äºè½¬å°é¨" tem1="21" tem2="29" windState="ä¸é£å¾®é£çº§è½¬ä¸åé£3-4çº§"/>
+     * <city quName="å±±è¥¿" pyName="shanxi" cityname="å¤ªå" state1="0" state2="0" stateDetailed="æ´" tem1="19" tem2="35" windState="åé£è½¬ä¸åé£å¾®é£çº§"/>
+     * <city quName="éè¥¿" pyName="sanxi" cityname="è¥¿å®" state1="0" state2="1" stateDetailed="æ´è½¬å¤äº" tem1="21" tem2="36" windState="ä¸åé£3-4çº§è½¬å¾®é£çº§"/>
+     * <city quName="åå·" pyName="sichuan" cityname="æé½" state1="8" state2="7" stateDetailed="ä¸­é¨è½¬å°é¨" tem1="22" tem2="29" windState="å¾®é£"/>
+     * <city quName="äºå" pyName="yunnan" cityname="ææ" state1="8" state2="8" stateDetailed="ä¸­é¨" tem1="17" tem2="24" windState="å¾®é£"/>
+     * <city quName="è´µå·" pyName="guizhou" cityname="è´µé³" state1="2" state2="3" stateDetailed="é´è½¬éµé¨" tem1="20" tem2="25" windState="åé£å¾®é£çº§"/>
+     * <city quName="æµæ±" pyName="zhejiang" cityname="æ­å·" state1="3" state2="3" stateDetailed="éµé¨" tem1="21" tem2="28" windState="ä¸é£å¾®é£çº§"/>
+     * <city quName="ç¦å»º" pyName="fujian" cityname="ç¦å·" state1="1" state2="4" stateDetailed="å¤äºè½¬é·éµé¨" tem1="25" tem2="32" windState="å¾®é£"/>
+     * <city quName="æ±è¥¿" pyName="jiangxi" cityname="åæ" state1="2" state2="2" stateDetailed="é´" tem1="26" tem2="33" windState="åé£è½¬è¥¿åé£å¾®é£çº§"/>
+     * <city quName="å¹¿ä¸" pyName="guangdong" cityname="å¹¿å·" state1="9" state2="9" stateDetailed="å¤§é¨" tem1="26" tem2="32" windState="ä¸åé£3-4çº§è½¬å¾®é£"/>
+     * <city quName="å¹¿è¥¿" pyName="guangxi" cityname="åå®" state1="3" state2="3" stateDetailed="éµé¨" tem1="26" tem2="32" windState="åé£å¾®é£çº§"/>
+     * <city quName="åäº¬" pyName="beijing" cityname="åäº¬" state1="0" state2="1" stateDetailed="æ´è½¬å¤äº" tem1="25" tem2="36" windState="è¥¿åé£å¾®é£çº§è½¬åé£3-4çº§"/>
+     * <city quName="å¤©æ´¥" pyName="tianjin" cityname="å¤©æ´¥" state1="0" state2="1" stateDetailed="æ´è½¬å¤äº" tem1="27" tem2="36" windState="è¥¿åé£è½¬åé£3-4çº§"/>
+     * <city quName="ä¸æµ·" pyName="shanghai" cityname="ä¸æµ·" state1="1" state2="1" stateDetailed="å¤äº" tem1="21" tem2="28" windState="ä¸åé£å¾®é£çº§è½¬3-4çº§"/>
+     * <city quName="éåº" pyName="chongqing" cityname="éåº" state1="7" state2="7" stateDetailed="å°é¨" tem1="24" tem2="32" windState="å¾®é£"/>
+     * <city quName="é¦æ¸¯" pyName="xianggang" cityname="é¦æ¸¯" state1="7" state2="1" stateDetailed="å°é¨è½¬å¤äº" tem1="27" tem2="31" windState="å¾®é£"/>
+     * <city quName="æ¾³é¨" pyName="aomen" cityname="æ¾³é¨" state1="3" state2="3" stateDetailed="éµé¨" tem1="25" tem2="31" windState="åé£3-4çº§"/>
+     * <city quName="å°æ¹¾" pyName="taiwan" cityname="å°å" state1="2" state2="7" stateDetailed="é´è½¬å°é¨" tem1="27" tem2="29" windState="ä¸åé£è½¬è¥¿åé£å¾®é£çº§"/>
+     * <city quName="è¥¿æ²" pyName="xisha" cityname="è¥¿æ²" state1="4" state2="4" stateDetailed="é·éµé¨" tem1="25" tem2="29" windState="åé£4-5çº§è½¬3-4çº§"/>
+     * <city quName="åæ²" pyName="nanshadao" cityname="åæ²" state1="3" state2="3" stateDetailed="éµé¨" tem1="27" tem2="28" windState="è¥¿åé£3-4çº§è½¬å¾®é£"/>
+     * <city quName="éé±¼å²" pyName="diaoyudao" cityname="éé±¼å²" state1="7" state2="7" stateDetailed="å°é¨" tem1="25" tem2="27" windState="åé£5-6çº§è½¬4-5çº§"/>
+     * </china>
+     * <p>
+     * 乱码解决方案。。。已解决，具体见XMLRequest.java 注释
      */
 
     private void xmlRequest() {
@@ -279,7 +280,7 @@ public class VolleyActivity extends AppCompatActivity {
                                 if ("city".equals(nodeName)) {
                                     String pName = xmlPullParser.getAttributeValue(0);
                                     String cName = xmlPullParser.getAttributeValue(2);
-                                    Log.e("省份：" + pName, "省会" + cName);
+                                    Log.e("省份：" + pName, "省会:" + cName);
                                 }
                                 break;
                         }
@@ -301,8 +302,29 @@ public class VolleyActivity extends AppCompatActivity {
         xmlRequest.setTag("q1");
         //加入到RequestQueue中
         requestQueue.add(xmlRequest);
+    }
 
+    private void gsonRequest() {
+        //创建一个RequestQueue对象
+        requestQueue = Volley.newRequestQueue(VolleyActivity.this);
+        String url = "http://www.weather.com.cn/data/sk/101020100.html";
+        //实例化一个Request对象
+        GSONRequest<Weather> gsonRequest = new GSONRequest<Weather>(url, Weather.class, new Response.Listener<Weather>() {
+            @Override
+            public void onResponse(Weather weather) {
+                Log.e("gsonRequest", weather.toString());
 
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
+        });
+
+        gsonRequest.setTag("q1");
+
+        requestQueue.add(gsonRequest);
     }
 
     @Override
