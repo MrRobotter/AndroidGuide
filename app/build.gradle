@@ -17,6 +17,13 @@ android {
         }
     }
 }
+repositories {
+
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -27,4 +34,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/library-1.0.19.jar')
     compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.github.hackware1993:MagicIndicator:1.5.0'
 }
