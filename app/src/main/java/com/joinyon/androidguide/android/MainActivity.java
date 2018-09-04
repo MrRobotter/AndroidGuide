@@ -22,6 +22,10 @@ import com.joinyon.androidguide.R;
 import java.io.File;
 import java.io.FileOutputStream;
 
+/**
+ * https://github.com/yubo725/flutter-osc/tree/master/android/app 开源中国app
+ */
+
 public class MainActivity extends AppCompatActivity implements View.OnLongClickListener {
     ImageView imageView;
 

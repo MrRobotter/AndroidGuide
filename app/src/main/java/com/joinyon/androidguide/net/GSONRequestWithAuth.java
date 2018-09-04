@@ -20,10 +20,10 @@ public class GSONRequestWithAuth<T> extends Request<T> {
     private Map<String, String> mHeader = new HashMap<String, String>();
     private String mBody;
 
-    /**http请求编码方式：
-     *
+    /**
+     * http请求编码方式：
      */
-    private static final String PROTOCOL_CHARSET="utf-8";
+    private static final String PROTOCOL_CHARSET = "utf-8";
 
     static {
 //        mHeader.put("APP-Key","Key");
@@ -32,6 +32,7 @@ public class GSONRequestWithAuth<T> extends Request<T> {
 
     /**
      * 构造方法
+     *
      * @param method
      * @param url
      * @param clazz
@@ -39,7 +40,7 @@ public class GSONRequestWithAuth<T> extends Request<T> {
      * @param listener
      */
 
-    public GSONRequestWithAuth(int method, String url, Class<T> clazz, Response.Listener<T> mListener,Map<String,String> appendHeader,String body, Response.ErrorListener listener) {
+    public GSONRequestWithAuth(int method, String url, Class<T> clazz, Response.Listener<T> mListener, Map<String, String> appendHeader, String body, Response.ErrorListener listener) {
         super(method, url, listener);
         this.clazz = clazz;
         this.mListener = mListener;
@@ -47,8 +48,8 @@ public class GSONRequestWithAuth<T> extends Request<T> {
 
     }
 
-    public GSONRequestWithAuth(String url, Class<T> clazz, Response.Listener<T> mListener, Map<String,String> appendHeader,String body, Response.ErrorListener listener) {
-        this(Method.GET, url, clazz, mListener,appendHeader,body,listener);
+    public GSONRequestWithAuth(String url, Class<T> clazz, Response.Listener<T> mListener, Map<String, String> appendHeader, String body, Response.ErrorListener listener) {
+        this(Method.GET, url, clazz, mListener, appendHeader, body, listener);
     }
 
     @Override

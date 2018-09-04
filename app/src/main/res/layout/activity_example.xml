@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/new_editor_post_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="New Editor - Post 1" />
+
+    <Button
+        android:id="@+id/new_editor_post_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_editor_post_1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="New Editor - Empty Post" />
+
+    <Button
+        android:id="@+id/legacy_editor_post_1_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_editor_post_empty"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Legacy Editor - Post 1 - Local Draft" />
+
+    <Button
+        android:id="@+id/legacy_editor_post_1_remote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/legacy_editor_post_1_local"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Legacy Editor - Post 1 - Remote" />
+
+
+    <Button
+        android:id="@+id/my"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/legacy_editor_post_1_remote"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="我的编辑器" />
+
+
+</RelativeLayout>

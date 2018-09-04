@@ -1,0 +1,417 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llEditorView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:text="作品详情介绍"
+                android:textColor="#333333"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/color_grey_999999" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <include
+                android:id="@+id/webview"
+                layout="@layout/editor_webview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ScrollView
+                android:id="@+id/sourceview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@android:color/white"
+                android:fillViewport="true"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/post_content_wrapper"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:id="@+id/sourceview_horizontal_divider"
+                        style="@style/DividerSourceView"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/format_bar_horizontal_divider_height"
+                        android:layout_marginLeft="@dimen/sourceview_side_margin"
+                        android:layout_marginRight="@dimen/sourceview_side_margin" />
+
+                    <com.joinyon.androidguide.WordPressEditor.widget.SourceViewEditText
+                        android:id="@+id/sourceview_content"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="@dimen/sourceview_side_margin"
+                        android:layout_marginRight="@dimen/sourceview_side_margin"
+                        android:layout_marginTop="@dimen/sourceview_top_margin"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="top"
+                        android:imeOptions="flagNoExtractUi"
+                        android:inputType="textMultiLine|textCapSentences|textNoSuggestions"
+                        android:lineSpacingExtra="4dp"
+                        android:maxLength="10000000"
+                        android:textColorHint="@color/sourceview_placeholder_text"
+                        android:textSize="16sp"
+                        android:typeface="monospace" />
+                </LinearLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/format_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffffff"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:paddingBottom="2.0dip">
+
+                <LinearLayout
+                    android:id="@+id/ll_txteditor_style_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="100dp"
+                    android:background="@drawable/shape_fontoption_border"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                        android:id="@+id/format_bar_button_bold"
+                        style="@style/FormatBarButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/format_bar_button_bold_selector"
+                        android:contentDescription="@string/format_bar_description_bold"
+                        android:tag="@string/format_bar_tag_bold" />
+
+                    <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                        android:id="@+id/format_bar_button_italic"
+                        style="@style/FormatBarButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/format_bar_button_italic_selector"
+                        android:contentDescription="@string/format_bar_description_italic"
+                        android:tag="@string/format_bar_tag_italic" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_marginRight="140.0dip"
+                    android:id="@+id/ll_font_option_ol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_fontoption_border"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                        android:id="@+id/format_bar_button_ul"
+                        style="@style/FormatBarButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:background="@drawable/format_bar_button_ul_selector"
+                        android:contentDescription="@string/format_bar_description_ul"
+                        android:tag="@string/format_bar_tag_unorderedList"
+                        android:visibility="visible" />
+
+                    <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                        android:id="@+id/format_bar_button_ol"
+                        style="@style/FormatBarButton"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:background="@drawable/format_bar_button_ol_selector"
+                        android:contentDescription="@string/format_bar_description_ol"
+                        android:tag="@string/format_bar_tag_orderedList"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_font_option_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40.0dip"
+                    android:background="@drawable/shape_fontoption_border"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:padding="5.0dip"
+                    android:visibility="gone">
+
+                    <RadioGroup
+                        android:id="@+id/rg_font_option_a"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_add"
+                            style="@style/fontchange"
+                            app:checkedResId="@mipmap/font_add_selected"
+                            app:unCheckedResId="@mipmap/font_add" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_normal"
+                            style="@style/fontchange"
+                            app:checkedResId="@mipmap/font_selected"
+                            app:unCheckedResId="@mipmap/font_unselected" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_sub"
+                            style="@style/fontchange"
+                            app:checkedResId="@mipmap/font_sub_selected"
+                            app:unCheckedResId="@mipmap/font_sub" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_font_option_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_fontoption_border"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:padding="5.0dip"
+                    android:visibility="gone">
+
+                    <RadioGroup
+                        android:id="@+id/rg_font_option_center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_left"
+                            style="@style/fontchange"
+                            app:checkedResId="@mipmap/font_left_selected"
+                            app:unCheckedResId="@mipmap/font_left" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_center"
+                            style="@style/fontchange"
+                            app:checkedResId="@mipmap/font_center_selected"
+                            app:unCheckedResId="@mipmap/font_center" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_right"
+                            style="@style/fontchange"
+                            app:checkedResId="@mipmap/font_right_selected"
+                            app:unCheckedResId="@mipmap/font_right" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_font_option_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_fontoption_border"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:padding="5.0dip"
+                    android:visibility="gone">
+
+                    <RadioGroup
+                        android:id="@+id/rg_font_option_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_black"
+                            style="@style/fontcolor"
+                            app:checkedResId="@mipmap/font_color_black_selected"
+                            app:unCheckedResId="@mipmap/font_color_black" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_gray"
+                            style="@style/fontcolor"
+                            app:checkedResId="@mipmap/font_color_gray_selected"
+                            app:unCheckedResId="@mipmap/font_color_gray" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_white"
+                            style="@style/fontcolor"
+                            app:checkedResId="@mipmap/font_color_whete_selected"
+                            app:unCheckedResId="@mipmap/font_color_whete" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_blackgray"
+                            style="@style/fontcolor"
+                            app:checkedResId="@mipmap/font_color_blackgray_selected"
+                            app:unCheckedResId="@mipmap/font_color_blackgray" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_blue"
+                            style="@style/fontcolor"
+                            app:checkedResId="@mipmap/font_color_blue_selected"
+                            app:unCheckedResId="@mipmap/font_color_blue" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_green"
+                            style="@style/fontcolor"
+                            app:checkedResId="@mipmap/font_color_green_selected"
+                            app:unCheckedResId="@mipmap/font_color_green" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_red"
+                            style="@style/fontcolor"
+                            app:checkedResId="@mipmap/font_color_red_selected"
+                            app:unCheckedResId="@mipmap/font_color_red" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_violet"
+                            style="@style/fontcolor"
+                            app:checkedResId="@mipmap/font_color_violet_selected"
+                            app:unCheckedResId="@mipmap/font_color_violet" />
+
+                        <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                            android:id="@+id/mrb_font_option_yellow"
+                            style="@style/fontcolor"
+                            app:checkedResId="@mipmap/font_color_yellow_selected"
+                            app:unCheckedResId="@mipmap/font_color_yellow" />
+
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="#11000000" />
+
+            <LinearLayout
+                android:id="@+id/ll_font_option_area"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff1efef"
+                android:orientation="horizontal"
+                android:paddingBottom="10.0dip"
+                android:paddingTop="10.0dip">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                        android:id="@+id/format_bar_button_html"
+                        style="@style/FormatBarHtmlButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:background="@drawable/format_bar_button_html_selector"
+                        android:contentDescription="@string/format_bar_description_html" />
+
+
+                    <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                        android:id="@+id/format_bar_button_link"
+                        style="@style/FormatBarButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/format_bar_button_link_selector"
+                        android:contentDescription="@string/format_bar_description_link"
+                        android:tag="@string/format_bar_tag_link" />
+
+                    <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                        android:id="@+id/format_bar_button_media"
+                        style="@style/FormatBarButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:background="@drawable/format_bar_button_media_selector"
+                        android:contentDescription="@string/format_bar_description_media" />
+
+                    <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                        android:id="@+id/format_bar_button_quote"
+                        style="@style/FormatBarButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:background="@drawable/format_bar_button_quote_selector"
+                        android:contentDescription="@string/format_bar_description_quote"
+                        android:tag="@string/format_bar_tag_blockquote" />
+
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/rg_font_option_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                        android:id="@+id/iv_font_option_ol"
+                        style="@style/fontoption"
+                        app:checkedResId="@drawable/format_bar_button_ol_highlighted"
+                        app:unCheckedResId="@drawable/format_bar_button_ol" />
+
+                    <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                        android:id="@+id/iv_font_option_b"
+                        style="@style/fontoption"
+                        app:checkedResId="@mipmap/font_border_selectedn"
+                        app:unCheckedResId="@mipmap/font_border" />
+
+                    <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                        android:id="@+id/iv_font_option_a"
+                        style="@style/fontoption"
+                        app:checkedResId="@mipmap/font_selected"
+                        app:unCheckedResId="@mipmap/font_unselected" />
+
+                    <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                        android:id="@+id/iv_font_option_center"
+                        style="@style/fontoption"
+                        app:checkedResId="@mipmap/font_center_selected"
+                        app:unCheckedResId="@mipmap/font_center" />
+
+                    <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
+                        android:id="@+id/iv_font_option_color"
+                        style="@style/fontoption"
+                        app:checkedResId="@mipmap/font_color_selected"
+                        app:unCheckedResId="@mipmap/font_color" />
+                </RadioGroup>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/format_bar_height"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom"
+    android:background="@color/format_bar_background"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/format_bar_horizontal_divider"
+        style="@style/Divider"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/format_bar_horizontal_divider_height" />
+
+    <LinearLayout
+        android:id="@+id/format_bar_buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/format_bar_height"
+        android:layout_gravity="bottom"
+        android:layout_marginRight="@dimen/format_bar_right_margin"
+        android:orientation="horizontal"
+        tools:ignore="RtlHardcoded">
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/format_bar_scroll_right_margin"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/format_bar_left_margin"
+                android:orientation="horizontal"
+                tools:ignore="RtlHardcoded">
+
+                <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                    android:id="@+id/format_bar_button_media"
+                    style="@style/FormatBarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/format_bar_button_media_selector"
+                    android:contentDescription="@string/format_bar_description_media" />
+
+                <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                    android:id="@+id/format_bar_button_bold"
+                    style="@style/FormatBarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/format_bar_button_bold_selector"
+                    android:contentDescription="@string/format_bar_description_bold"
+                    android:tag="@string/format_bar_tag_bold" />
+
+                <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                    android:id="@+id/format_bar_button_italic"
+                    style="@style/FormatBarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/format_bar_button_italic_selector"
+                    android:contentDescription="@string/format_bar_description_italic"
+                    android:tag="@string/format_bar_tag_italic" />
+
+                <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                    android:id="@+id/format_bar_button_quote"
+                    style="@style/FormatBarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/format_bar_button_quote_selector"
+                    android:contentDescription="@string/format_bar_description_quote"
+                    android:tag="@string/format_bar_tag_blockquote" />
+
+                <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                    android:id="@+id/format_bar_button_ul"
+                    style="@style/FormatBarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/format_bar_button_ul_selector"
+                    android:contentDescription="@string/format_bar_description_ul"
+                    android:tag="@string/format_bar_tag_unorderedList" />
+
+                <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                    android:id="@+id/format_bar_button_ol"
+                    style="@style/FormatBarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/format_bar_button_ol_selector"
+                    android:contentDescription="@string/format_bar_description_ol"
+                    android:tag="@string/format_bar_tag_orderedList" />
+
+                <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+                    android:id="@+id/format_bar_button_link"
+                    style="@style/FormatBarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/format_bar_button_link_selector"
+                    android:contentDescription="@string/format_bar_description_link"
+                    android:tag="@string/format_bar_tag_link" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/format_bar_chevron" />
+
+        <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
+            android:id="@+id/format_bar_button_html"
+            style="@style/FormatBarHtmlButton"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@drawable/format_bar_button_html_selector"
+            android:contentDescription="@string/format_bar_description_html" />
+    </LinearLayout>
+</LinearLayout>

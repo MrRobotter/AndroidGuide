@@ -32,7 +32,20 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation files('libs/library-1.0.19.jar')
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.github.hackware1993:MagicIndicator:1.5.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.github.1002326270xc:LayoutManager-FlowLayout:v1.7'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    implementation files('libs/com.baidu.tts_2.3.2.20180713_6101c2a.jar')
+
+    compile 'com.github.valuesfeng:androidpicturepicker:1.0.0'//图片多选
+    compile 'com.github.LuckSiege.PictureSelector:picture_library:v1.2.5'//视频多选
+    compile 'com.hdl:elog:v2.0.2'
+    compile 'com.jwkj:CrashExceptioner:v2.0.3'
+    compile 'org.wordpress:utils:1.11.0'
+    provided 'org.mockito:mockito-core:1.10.19'
+    compile 'com.android.support:design:25.0.1'
+
+
 }
