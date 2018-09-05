@@ -11,6 +11,11 @@
 
 #### 基础知识
 * [通知](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E9%80%9A%E7%9F%A5.md)
+* [Gradle](http://joinyon.top/2018/06/11/GradleForAndroid/)
+
+### 框架
+
+### 第三方
 
 
 
