@@ -329,7 +329,7 @@ public class MyView extends View {
 }
 
 ````
-最后完整代码详见[MyView.java]()文件
+最后完整代码详见[MyView.java](https://github.com/MrRobotter/AndroidGuide/blob/master/app/src/main/java/com/joinyon/androidguide/MyView.java)文件
 
 # 2 自定义ViewGroup
 相比较自定义View，自定义ViewGroup要复杂的多，因为它不仅要管好自己的属性，
