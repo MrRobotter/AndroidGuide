@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import android.text.TextUtils;
 
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -305,5 +306,27 @@ public class BaiDuActivity extends BaseActivity implements View.OnClickListener 
         int result = synthesizer.batchSpeak(texts);
         checkResult(result, "batchSpeak");
     }
+
+    @Override
+    protected void onDestroy() {
+        synthesizer.release();
+        Log.i(TAG, "释放资源成功");
+        super.onDestroy();
+    }
+
+    protected void handle(Message msg) {
+        switch (msg.what) {
+            case INIT_SUCCESS:
+                for (Button b : buttons) {
+                    b.setEnabled(true);
+                }
+                msg.what = PRINT;
+                break;
+            default:
+                break;
+        }
+        super.handle(msg);
+    }
+
 
 }

@@ -789,12 +789,12 @@ ZSSEditor.setParagraph = function() {
 
 	ZSSEditor.sendEnabledStyles();
 };
-
+//
 ZSSEditor.undo = function() {
 	document.execCommand('undo', false, null);
 	ZSSEditor.sendEnabledStyles();
 };
-
+//
 ZSSEditor.redo = function() {
 	document.execCommand('redo', false, null);
 	ZSSEditor.sendEnabledStyles();
@@ -902,7 +902,7 @@ ZSSEditor.insertHTMLWrappedInParagraphTags = function(html) {
 
     this.insertHTML(paragraphOpenTag + space + paragraphCloseTag);
 };
-
+//插入链接
 ZSSEditor.insertLink = function(url, title) {
     var html = '<a href="' + url + '">' + title + "</a>";
 
@@ -927,7 +927,7 @@ ZSSEditor.insertLink = function(url, title) {
 
     this.insertHTML(html);
 };
-
+//更新链接
 ZSSEditor.updateLink = function(url, title) {
 
     ZSSEditor.restoreRange();
@@ -2500,7 +2500,7 @@ ZSSEditor.insertText = function(text, reformatVisually) {
 ZSSEditor.isCommandEnabled = function(commandName) {
 	return document.queryCommandState(commandName);
 };
-
+//样式改变
 ZSSEditor.sendEnabledStyles = function(e) {
 
 	var items = [];

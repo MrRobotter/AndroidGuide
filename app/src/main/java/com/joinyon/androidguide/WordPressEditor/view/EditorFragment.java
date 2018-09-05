@@ -570,7 +570,7 @@ public class EditorFragment extends EditorFragmentAbstract implements View.OnCli
         }
     }
 
-    protected void initJsEditor() {//初始化js编辑器
+    protected void initJsEditor() {//初始化js编辑器,这里调用了
         Log.e("TAG", "initJsEditor()");
 
         if (!isAdded()) {

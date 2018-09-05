@@ -31,7 +31,12 @@
         <activity android:name=".net.VolleyActivity" />
         <activity android:name=".android.UI.MagicIndicatorActivity" />
         <activity android:name=".ad.RichEditActivity" />
-        <activity android:name=".GuideActivity" />
+        <activity android:name=".GuideActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".android.UI.PhotoFlowActivity" />
         <activity android:name=".HRichEditorView.view.HRichEditorView"></activity>
         <activity android:name=".HRichEditorView.view.LinkedActivity" />
@@ -42,11 +47,7 @@
         <activity
             android:name=".WordPressEditor.activity.MainExampleActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".WordPressEditor.legacy.EditLinkActivity" />
         <activity android:name=".HRichEditorView.HRichEditorActivity"></activity>

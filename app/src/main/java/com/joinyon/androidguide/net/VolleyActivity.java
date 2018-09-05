@@ -331,7 +331,9 @@ public class VolleyActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         //取消请求
-        requestQueue.cancelAll(this);
+        if (requestQueue != null) {
+            requestQueue.cancelAll(this);
+        }
     }
 
 

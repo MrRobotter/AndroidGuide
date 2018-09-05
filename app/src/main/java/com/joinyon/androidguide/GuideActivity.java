@@ -13,6 +13,7 @@ import com.joinyon.androidguide.WordPressEditor.activity.MainExampleActivity;
 import com.joinyon.androidguide.android.UI.MagicIndicatorActivity;
 import com.joinyon.androidguide.android.UI.PhotoFlowActivity;
 import com.joinyon.androidguide.net.VolleyActivity;
+import com.joinyon.androidguide.tt.BaiDuActivity;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,7 +22,7 @@ import java.util.Map;
 
 public class GuideActivity extends AppCompatActivity implements GuideAdapter.OnItemClickListener {
     private RecyclerView recyclerView;
-    private String[] ITEMS = new String[]{"一个跑马灯广告的实现", "一款指示器", "富文本编辑器", "HRichEdit", "流布局", "Volley"};
+    private String[] ITEMS = new String[]{"一个跑马灯广告的实现", "一款指示器", "富文本编辑器", "HRichEdit", "流布局", "Volley","百度语音"};
     private List<String> itemList = Arrays.asList(ITEMS);
     private GuideAdapter adapter;
 
@@ -70,6 +71,10 @@ public class GuideActivity extends AppCompatActivity implements GuideAdapter.OnI
                 break;
             case 5:
                 intent = new Intent(GuideActivity.this, VolleyActivity.class);
+                startActivity(intent);
+                break;
+            case 6:
+                intent = new Intent(GuideActivity.this, BaiDuActivity.class);
                 startActivity(intent);
                 break;
             default:
