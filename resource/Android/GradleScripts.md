@@ -9,5 +9,39 @@
 * 执行阶段。配置阶段的task会被执行，执行的顺序取决于启动脚本时传入的参数和当前目录。
 
 #### 1.2task
- task表示一个逻辑上的执行单元，我们会多次使用。当我们进行重新编译工程的时候会用到一个叫做build的task，清理工程的时候会用到clean的task，gradle已经为我们准备了一系列的task，我们可以使用gradle task来查看：AS界面右侧 Gradle
+ task表示一个逻辑上的执行单元，我们会多次使用。当我们进行重新编译工程的时候会用到一个叫做build的task，清理工程的时候会用到clean的task，gradle已经为我们准备了一系列的task，我们可以使用gradle task来查看：AS界面右侧 Gradle 如下图所示：/n
  ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/gradle_tastk.png)
+
+
+ 此外，还可以自己声明一个task，比如：
+ ```
+ task testHaha {
+    println "这是一个测试！"
+}
+```
+同步之后，我们可以在上图中的task中 other里看到 testHaha 
+
+ ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/task_test.jpg)
+
+ 双击这个task 这这个任务就会被执行，打印结果可以验证：
+ ```
+ Executing tasks: [testHaha]
+
+Configuration on demand is an incubating feature.
+这是一个测试！
+Configuration 'compile' in project ':app' is deprecated. Use 'implementation' instead.
+Configuration 'provided' in project ':app' is deprecated. Use 'compileOnly' instead.
+:app:testHaha UP-TO-DATE
+
+BUILD SUCCESSFUL in 0s
+
+```
+还可以用以下方法来定义task：
+```
+task hello << {
+    println "hello world"
+}
+
+```
+这个和前者的区别是：“<<”的意思是给hello这个task添加一些action，其实就是调用了task的doLast方法，所以他和以下代码是等价的
+

@@ -24,6 +24,10 @@ repositories {
     }
 }
 
+task testHaha {
+    println "这是一个测试！"
+}
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
