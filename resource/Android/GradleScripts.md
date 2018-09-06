@@ -264,11 +264,17 @@ allproject{}方法被调用，这个方法的参数是一个闭包，然后闭�
  ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/gradle文件位置示意图.jpg )
 
 简化之后：
+
 MyApp
+
 |--build.gradle
+
 |--settings.gradle
+
 |--app
+
     |--build.gradle
+    
 构建一个工程的时候，会有以下的顺序：
 1. 创建一个Settings对象。
 2. 检查settings.gradle是否存在，不存在就什么也不做，存在就用它来配置settings对象。
