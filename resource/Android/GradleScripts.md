@@ -234,7 +234,19 @@ project.dependencies({
 })
 ````
 我们知道block是一个闭包，这里首先调用project下的dependencies方法，这个方法的参数是一个闭包，这个闭包是被传递给DependencyHandler,DependenchHandler有一个方法：add,这个add有三个参数，分别是'compile'、'……'和一个闭包
+gradle中有以下顶层build script block
 
+| **Block** | **Description** |
+| :----:|:----: |
+| allProjects{} | 配置本工程和子工程 Configures this project and each of its sub-project |
+| artifacts{} | Configures the published artifacts for this project. |
+| buildScript{}| Configures the build script classpath for this project |
+| configuration{} | Configures the dependency configurations for this project|
+| dependencies{}|Configures the dependencies for this project.|
+| repositories{}| Configures the repositories for this project|
+| sourceSet{} | Configures the source sets of this project|
+| subProject{}| Configures the sub-projects of this project|
+| publishing{}| Configures the Publishing Extension added by the publishing plugin.|
 
 
 
