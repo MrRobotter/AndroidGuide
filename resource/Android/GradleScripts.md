@@ -9,7 +9,7 @@
 * 执行阶段。配置阶段的task会被执行，执行的顺序取决于启动脚本时传入的参数和当前目录。
 
 #### 1.2 task
- task表示一个逻辑上的执行单元，我们会多次使用。当我们进行重新编译工程的时候会用到一个叫做build的task，清理工程的时候会用到clean的task，gradle已经为我们准备了一系列的task，我们可以使用gradle task来查看：AS界面右侧 Gradle 如下图所示:
+ task表示一个逻辑上的执行单元，我们会多次使用。当我们进行重新编译工程的时候会用到一个叫做build的task，清理工程的时候会用到clean的task，gradle已经为我们准备了一系列的task，我们可以使用gradle task来查看：AS界面右侧 Gradle 如下图所示: <br>
 
  ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/gradle_tastk.png )
 
@@ -20,7 +20,7 @@
     println "这是一个测试！"
 }
 ````
-同步之后，我们可以在上图中的task中 other里看到 testHaha 
+同步之后，我们可以在上图中的task中 other里看到 testHaha<br>
 
  ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/task_test.jpg )
 
@@ -260,21 +260,18 @@ gradle工具会先创建一个Project对象，它是一个委托对象（delegat
 allproject{}方法被调用，这个方法的参数是一个闭包，然后闭包会被执行，用来配置Project对象。
 
 ### 4.Understanding the Gradle files
-理解了Project、task和action的概念以后，就可以理解gradle的配置文件了。在Android studio的工程中一般会有三个配置文件，他们各有各的功能。这三个文件的位置应该是这样的：
- ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/gradle文件位置示意图.jpg )
+理解了Project、task和action的概念以后，就可以理解gradle的配置文件了。在Android studio的工程中一般会有三个配置文件，他们各有各的功能。这三个文件的位置应该是这样的：<br>
+ <center>![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/gradle文件位置示意图.jpg )</center>
 
 简化之后：
 
 MyApp
 
-|--build.gradle
+|--build.gradle<br>
+|--settings.gradle<br>
+|--app<br>
+    |--build.gradle<br>
 
-|--settings.gradle
-
-|--app
-
-    |--build.gradle
-    
 构建一个工程的时候，会有以下的顺序：
 1. 创建一个Settings对象。
 2. 检查settings.gradle是否存在，不存在就什么也不做，存在就用它来配置settings对象。
