@@ -157,7 +157,7 @@ class MyClass {
 DSL(Domain Specific Language)，特定领域的语言。gradle DSL就是gradle领域的语言。为了更好理解gradle,学习gradle的脚步虽然非常简短，但它有它的语法，如果不搞懂DSL，即便知道了怎么修改脚本得到想要的结果，也不好理解为什么要这样修改。
 #### 3.1 基本概念
 首先，gradle script是配置脚本，当脚本被执行的时候，它配置一个特定的对象，比如说，在AS工程中，build.gradle被执行的时候，它会配置一个Project对象，settings.gradle被执行时，它配置一个Settings对象。Project,Settings这种对象就叫做委托对象，下表展示了不同脚本的不同委托对象：
-|**Type of script** |**Delegates to instance of**|
+|** Type of script ** |** Delegates to instance of **|
 |:----:|:----:|
 |Build script|Project|
 |Init script|Gradle|
@@ -168,7 +168,12 @@ DSL(Domain Specific Language)，特定领域的语言。gradle DSL就是gradle�
 #### 3.2构建脚本结构
 一个构建脚本由零个或多个statements和script blocks组成。以下是对他们的说明：
 		
-		A build script is made up of zero or more statements and script blocks. Statements can include method calls, property assignments, and local variable definitions. A script block is a method call which takes a closure as a parameter. The closure is treated as a configuration closure which configures some delegate object as it executes. The top level script blocks are listed below.
+		A build script is made up of zero or more statements and script blocks. 
+		Statements can include method calls, property assignments, and local variable definitions. 
+		A script block is a method call which takes a closure as a parameter. 
+		The closure is treated as a configuration closure which configures some delegate object as it executes. 
+		The top level script blocks are listed below.
+
 大概意思是statments可以包括方法调用，属性分配，本地变量定义；script bolck 则是一个方法，它的参数可以是一个闭包。这个闭包是一个配置闭包，因为当它被执行的时候，它用来分配委托对象。以AS的build.gradle为例：
 
 ````
@@ -217,7 +222,17 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     }
 ````
-这是一条 script block,这个也是简写的。
+这是一条 script block,这个也是简写的。dependencies完整的写法为：
+````
+project.dependencies({
+	add('compile','com.android.tools.build:gradle:2.0',{
+
+	//Configuration statements
+
+	})
+})
+````
+我们知道block是一个闭包，这里首先调用project下的dependencies方法，这个方法的参数是一个闭包，这个闭包是被传递给DependencyHandler,DependenchHandler有一个方法：add,这个add有三个参数，分别是'compile'、'……'和一个闭包
 
 
 
