@@ -247,6 +247,38 @@ gradle中有以下顶层build script block
 | sourceSet{} | Configures the source sets of this project|
 | subProject{}| Configures the sub-projects of this project|
 | publishing{}| Configures the Publishing Extension added by the publishing plugin.|
+这里再以allProject为例，说一下script block 是怎么工作的：
+````
+   allprojects{
+    repositiories{
+        jcenter()
+    }
+   }
+````
+allprojects{}一般是顶层build.gradle中的一个script block，它就是一个方法，这个方法接受一个闭包作为参数。
+gradle工具会先创建一个Project对象，它是一个委托对象（delegate object）,它创建以后，build.gradle被执行，执行的过程中,
+allproject{}方法被调用，这个方法的参数是一个闭包，然后闭包会被执行，用来配置Project对象。
 
+### 4.Understanding the Gradle files
+理解了Project、task和action的概念以后，就可以理解gradle的配置文件了。在Android studio的工程中一般会有三个配置文件，他们各有各的功能。这三个文件的位置应该是这样的：
+ ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/gradle文件位置示意图.jpg )
+
+简化之后：
+MyApp
+|--build.gradle
+|--settings.gradle
+|--app
+    |--build.gradle
+构建一个工程的时候，会有以下的顺序：
+1. 创建一个Settings对象。
+2. 检查settings.gradle是否存在，不存在就什么也不做，存在就用它来配置settings对象。
+3. 使用Settings对象创建Project对象，多个Module工程中，会创建一系列的Project对象。
+4. 检查build.gradle是不是存在，存在的话就用它来配置Project对象。
+#### 4.1 settings.gradle
+如果一个新的工程只包含一个Android app 那么settings.gradle 应该是这样的：
+````
+include ':app'
+```` 
+如果你的工程里只有一个app，那么settings.gradle文件可以不要。include':app'中的app指明你要构建的模块名，Android studio 默认的模块名是 app ，你可以把app目录的名字改掉，比如改成hello，那么这个时候，你就必须把settings.gradle中的 app也改成hello.这会是你非常有意义的一次尝试，因为有了这次尝试，以后你就可以按你所愿修改这个文件了。
 
 
