@@ -9,8 +9,9 @@
 * 执行阶段。配置阶段的task会被执行，执行的顺序取决于启动脚本时传入的参数和当前目录。
 
 #### 1.2task
- task表示一个逻辑上的执行单元，我们会多次使用。当我们进行重新编译工程的时候会用到一个叫做build的task，清理工程的时候会用到clean的task，gradle已经为我们准备了一系列的task，我们可以使用gradle task来查看：AS界面右侧 Gradle 如下图所示：/n
- ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/gradle_tastk.png)
+ task表示一个逻辑上的执行单元，我们会多次使用。当我们进行重新编译工程的时候会用到一个叫做build的task，清理工程的时候会用到clean的task，gradle已经为我们准备了一系列的task，我们可以使用gradle task来查看：AS界面右侧 Gradle 如下图所示：\n
+
+ ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/gradle_tastk.png )
 
 
  此外，还可以自己声明一个task，比如：
@@ -21,7 +22,7 @@
 ```
 同步之后，我们可以在上图中的task中 other里看到 testHaha 
 
- ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/task_test.jpg)
+ ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/task_test.jpg )
 
  双击这个task 这这个任务就会被执行，打印结果可以验证：
  ```
