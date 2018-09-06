@@ -157,11 +157,12 @@ class MyClass {
 DSL(Domain Specific Language)，特定领域的语言。gradle DSL就是gradle领域的语言。为了更好理解gradle,学习gradle的脚步虽然非常简短，但它有它的语法，如果不搞懂DSL，即便知道了怎么修改脚本得到想要的结果，也不好理解为什么要这样修改。
 #### 3.1 基本概念
 首先，gradle script是配置脚本，当脚本被执行的时候，它配置一个特定的对象，比如说，在AS工程中，build.gradle被执行的时候，它会配置一个Project对象，settings.gradle被执行时，它配置一个Settings对象。Project,Settings这种对象就叫做委托对象，下表展示了不同脚本的不同委托对象：
-|** Type of script ** |** Delegates to instance of **|
-|:----:|:----:|
-|Build script|Project|
-|Init script|Gradle|
-|Settings script|Settings|
+
+| **Type of script** | **Delegates to instance of** |
+| :----:|:----: |
+| Build script | Project |
+| Init script | Gradle |
+| Settings script| Settings |
 
 其次，每一个Gradle script实现了一个Script接口，这意味着S抽屉平台接口中定义的方法和属性都可以在脚本中使用。
 
