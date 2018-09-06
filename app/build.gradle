@@ -28,6 +28,30 @@ task testHaha {
     println "这是一个测试！"
 }
 
+task hello << {
+    println "hello world"
+}
+
+def printHello = { println 'Hello' }
+
+printHello()
+// output: Hello
+
+def myClosure = { String str -> println str }
+myClosure('哈哈')
+
+// output: 哈哈
+
+def myClosure2 = { println myVar }
+MyClass myClass = new MyClass()
+myClosure2.setDelegate(myClass)
+myClosure2()
+
+class MyClass {
+    def myVar = 'Hello from MyClass!'
+}
+// output:Hello from MyClass!
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
