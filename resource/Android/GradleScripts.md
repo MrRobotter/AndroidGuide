@@ -153,10 +153,71 @@ class MyClass {
 		5. 和4类似，单数Closure是内联的：myMethod(arg1,{ println 'Hello world'})
 		6. 如果最后一个参数是closure,它可以从小括号中拿出来：myMethod(arg1){ println 'Hello world'
 
-### gradle DSL
+### 3 gradle DSL
 DSL(Domain Specific Language)，特定领域的语言。gradle DSL就是gradle领域的语言。为了更好理解gradle,学习gradle的脚步虽然非常简短，但它有它的语法，如果不搞懂DSL，即便知道了怎么修改脚本得到想要的结果，也不好理解为什么要这样修改。
 #### 3.1 基本概念
+首先，gradle script是配置脚本，当脚本被执行的时候，它配置一个特定的对象，比如说，在AS工程中，build.gradle被执行的时候，它会配置一个Project对象，settings.gradle被执行时，它配置一个Settings对象。Project,Settings这种对象就叫做委托对象，下表展示了不同脚本的不同委托对象：
+|**Type of script** |**Delegates to instance of**|
+|:----:|:----:|
+|Build script|Project|
+|Init script|Gradle|
+|Settings script|Settings|
 
+其次，每一个Gradle script实现了一个Script接口，这意味着S抽屉平台接口中定义的方法和属性都可以在脚本中使用。
+
+#### 3.2构建脚本结构
+一个构建脚本由零个或多个statements和script blocks组成。以下是对他们的说明：
+		
+		A build script is made up of zero or more statements and script blocks. Statements can include method calls, property assignments, and local variable definitions. A script block is a method call which takes a closure as a parameter. The closure is treated as a configuration closure which configures some delegate object as it executes. The top level script blocks are listed below.
+大概意思是statments可以包括方法调用，属性分配，本地变量定义；script bolck 则是一个方法，它的参数可以是一个闭包。这个闭包是一个配置闭包，因为当它被执行的时候，它用来分配委托对象。以AS的build.gradle为例：
+
+````
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.joinyon.androidguide"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+repositories {
+
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    }
+
+````
+
+该片段第一行 `apply plugin: 'com.android.application' 就是一条statements，其中apply是一个方法，后面是它的参数。这行语句其实是个缩写，写全应该是下面的：
+````
+project.apply([plugin:'com.android.application'])
+````
+这样就好理解了，project对象调用了apply方法，传入了一个Map作为参数，这个Map的key是plugin,value是com.android.application.
+
+接下来看下一个代码段：
+````
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    }
+````
+这是一条 script block,这个也是简写的。
 
 
 
