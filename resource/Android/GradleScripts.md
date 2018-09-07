@@ -261,16 +261,16 @@ allproject{}方法被调用，这个方法的参数是一个闭包，然后闭�
 
 ### 4.Understanding the Gradle files
 理解了Project、task和action的概念以后，就可以理解gradle的配置文件了。在Android studio的工程中一般会有三个配置文件，他们各有各的功能。这三个文件的位置应该是这样的：<br>
- <center>![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/gradle文件位置示意图.jpg )</center>
+ ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/gradle文件位置示意图.jpg )<center></center>
 
 简化之后：
-
+````
 MyApp
-
-|--build.gradle<br>
-|--settings.gradle<br>
-|--app<br>
-    |--build.gradle<br>
+|--build.gradle
+|--settings.gradle
+|--app
+    |--build.gradle
+````
 
 构建一个工程的时候，会有以下的顺序：
 1. 创建一个Settings对象。
