@@ -115,7 +115,7 @@
                     android:background="@drawable/shape_fontoption_border"
                     android:gravity="right"
                     android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <com.joinyon.androidguide.WordPressEditor.widget.RippleToggleButton
                         android:id="@+id/format_bar_button_bold"
@@ -390,6 +390,7 @@
                     <com.joinyon.androidguide.HRichEditorView.custom.MyRadioButton
                         android:id="@+id/iv_font_option_b"
                         style="@style/fontoption"
+                        android:layout_width="20dp"
                         app:checkedResId="@mipmap/font_border_selectedn"
                         app:unCheckedResId="@mipmap/font_border" />
 
