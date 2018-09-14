@@ -8,19 +8,181 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        flavorDimensions "versionCode"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "guide_manager_release"]
     }
-    buildTypes {
+
+
+    signingConfigs {
+        debug {
+            // No debug config
+            keyAlias 'androidguide'
+            keyPassword 'ff123456'
+            storeFile file('../tools/guide.jks')
+            storePassword '12345678'
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            storeFile file("../tools/guide.jks")
+            storePassword "12345678"
+            keyAlias "androidguide"
+            keyPassword "ff123456"
         }
     }
-}
-repositories {
 
-    maven {
-        url "https://jitpack.io"
+    buildTypes {
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "ENABLE_DEBUG", "true"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+
+        }
+
+
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "ENABLE_DEBUG", "false"
+            minifyEnabled false
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+//                    def outputFile = output.outputFile
+//                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    // 输出apk名称为boohee_v1.0_2015-01-15_wandoujia.apk
+//                        def fileName = "yunchuangya_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                    //def fileName = "121dian_v${defaultConfig.versionName}.apk"
+                    outputFileName = "AndroidGuide_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+//                    }
+                }
+            }
+        }
+    }
+
+    def versionPropsFile = file('../tools/version.properties')
+
+    if (versionPropsFile.canRead()) {
+
+        def Properties versionProps = new Properties()
+
+        versionProps.load(new FileInputStream(versionPropsFile))
+
+        int codeProps = versionProps['VERSION_CODE'].toInteger()
+
+        def runTasks = gradle.startParameter.taskNames
+        if ('b' in runTasks || 'build' in runTasks) {
+            codeProps++
+        }
+
+        //10123
+        int ver1 = codeProps / 10000
+        int ver2 = codeProps % 10000 / 100
+        int ver3 = codeProps % 100
+        def nameProps = ver1 + '.' + ver2 + '.' + ver3
+        //def nameProps = "1.1.0"
+        if ('b' in runTasks || 'build' in runTasks) {
+            versionProps['VERSION_CODE'] = codeProps.toString()
+            versionProps['VERSION_NAME'] = nameProps
+            versionProps.store(versionPropsFile.newWriter(), null)
+        }
+
+        defaultConfig {
+            versionCode codeProps
+            versionName nameProps
+            multiDexEnabled true
+        }
+    }
+
+    productFlavors {
+        common {}
+//        oppo {}
+//        meizu {}
+//        vivo {}
+//        xiaomi {}
+//        tengxun{}
+//        qihoo360{
+//        oppo{}
+//        meizu{}
+//        vivo{}
+//        baidu{}
+//        anzhuo{}
+//        kr121dian{}
+//        wandou{}
+//        kunrou121dian{}
+//        wuxian91{}
+//        huwei{}
+//        wan{}
+//        tongbu{}
+//        myversion{}
+//
+    }
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+
+
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+
+    dexOptions {
+        //使用增量模式构建
+        //incremental true
+        //最大栈内存
+        javaMaxHeapSize "4g"
+        //是否支持大工程模式
+        //jumboMode = true
+        //预编译
+        //preDexLibraries = false
+        //线程数
+        //threadCount ="8"
+    }
+
+
+}
+
+buildscript {
+    repositories {
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+    }
+
+    repositories {
+        jcenter()
+    }
+}
+allprojects {
+    repositories {
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+    }
+
+    repositories {
+        maven { url 'https://maven.google.com' }
+        maven { url "https://jitpack.io" }
+    }
+
+    repositories {
+        mavenCentral()
+        jcenter()
     }
 }
 
@@ -75,5 +237,6 @@ dependencies {
     provided 'org.mockito:mockito-core:1.10.19'
     compile 'com.android.support:design:25.0.1'
 
-
+    compile 'com.umeng.sdk:common:1.5.0'
+    compile 'com.umeng.sdk:analytics:7.5.0'
 }

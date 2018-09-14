@@ -23,6 +23,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5b9b68c9b27b0a593c000093" />
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />
+        <!--这里改成对应build.gradle中的 productFlavors.all 对应的字符串-->
+
+
+
         <activity
             android:name=".android.MainActivity"
             android:screenOrientation="portrait" />
