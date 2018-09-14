@@ -13,6 +13,7 @@
 * [通知](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E9%80%9A%E7%9F%A5.md)
 * [Gradle](http://joinyon.top/2018/06/11/GradleForAndroid/)
 * [Android studio Gradle详解](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/GradleScripts.md)
+* [多渠道打包]()
 
 ### 框架
 
@@ -30,14 +31,12 @@
 
 #### 戴鼠智能
 
-#### 云客家
-* 项目介绍
-* 项目结构目录
-
 #### 丰收收
 
 #### 单读
 
 #### GitHub客户端
+
+#### 掌上钱江学院
 
 
