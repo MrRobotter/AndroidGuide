@@ -13,7 +13,7 @@
 * [通知](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E9%80%9A%E7%9F%A5.md)
 * [Gradle](http://joinyon.top/2018/06/11/GradleForAndroid/)
 * [Android studio Gradle详解](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/GradleScripts.md)
-* [多渠道打包]()
+* [多渠道打包](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85.md)
 
 ### 框架
 
