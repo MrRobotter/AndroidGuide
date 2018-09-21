@@ -60,7 +60,6 @@ public class GuideActivity extends AppCompatActivity implements GuideAdapter.OnI
                 intent = new Intent(GuideActivity.this, MainExampleActivity.class);
                 startActivity(intent);
                 break;
-
             case 3:
                 intent = new Intent(GuideActivity.this, HRichEditorActivity.class);
                 startActivity(intent);
