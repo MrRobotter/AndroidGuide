@@ -15,6 +15,10 @@
 * [Android studio Gradle详解](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/GradleScripts.md)
 * [多渠道打包](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85.md)
 
+#### 开发
+* [开发规范](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83.md)
+* [开发遇到的问题](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98.md)
+* [一些控件](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E4%B8%80%E4%BA%9B%E6%8E%A7%E4%BB%B6.md)
 ### 框架
 
 ### 第三方
