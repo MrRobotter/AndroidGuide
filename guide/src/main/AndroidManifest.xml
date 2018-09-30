@@ -23,14 +23,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5b9b68c9b27b0a593c000093" />
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="${UMENG_CHANNEL_VALUE}" />
-        <!--这里改成对应build.gradle中的 productFlavors.all 对应的字符串-->
+        <!-- 这里改成对应build.gradle中的 productFlavors.all 对应的字符串 -->
 
         <activity
             android:name=".android.MainActivity"
@@ -41,13 +40,10 @@
         <activity android:name=".android.UI.MagicIndicatorActivity" />
         <activity android:name=".ad.RichEditActivity" />
         <activity android:name=".GuideActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".android.UI.PhotoFlowActivity" />
-        <activity android:name=".HRichEditorView.view.HRichEditorView"></activity>
+        <activity android:name=".HRichEditorView.view.HRichEditorView" />
         <activity android:name=".HRichEditorView.view.LinkedActivity" />
         <activity android:name=".HRichEditorView.view.TitleEidtorActivity" />
         <activity android:name=".HRichEditorView.view.TXTEditorActivity" />
@@ -55,12 +51,17 @@
         <activity android:name=".WordPressEditor.activity.EditorExampleActivity" />
         <activity
             android:name=".WordPressEditor.activity.MainExampleActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".WordPressEditor.legacy.EditLinkActivity" />
-        <activity android:name=".HRichEditorView.HRichEditorActivity"></activity>
-        <activity android:name=".WordPressEditor.activity.MyEditActivity"></activity>
+        <activity android:name=".HRichEditorView.HRichEditorActivity" />
+        <activity android:name=".WordPressEditor.activity.MyEditActivity" />
+        <activity android:name=".android.WebActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
