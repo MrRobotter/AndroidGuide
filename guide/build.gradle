@@ -240,4 +240,6 @@ dependencies {
     compile 'com.umeng.sdk:common:1.5.0'
     compile 'com.umeng.sdk:analytics:7.5.0'
     implementation files('libs/tencentX5WebView.jar')
+    implementation 'com.github.MrRobotter:CircularPercentRing:1.1'
+
 }
