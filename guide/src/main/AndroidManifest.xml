@@ -40,7 +40,11 @@
         <activity android:name=".android.UI.MagicIndicatorActivity" />
         <activity android:name=".ad.RichEditActivity" />
         <activity android:name=".GuideActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".android.UI.PhotoFlowActivity" />
         <activity android:name=".HRichEditorView.view.HRichEditorView" />
@@ -56,11 +60,7 @@
         <activity android:name=".HRichEditorView.HRichEditorActivity" />
         <activity android:name=".WordPressEditor.activity.MyEditActivity" />
         <activity android:name=".android.WebActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

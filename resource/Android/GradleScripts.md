@@ -278,16 +278,27 @@ MyApp
 3. 使用Settings对象创建Project对象，多个Module工程中，会创建一系列的Project对象。
 4. 检查build.gradle是不是存在，存在的话就用它来配置Project对象。
 #### 4.1 settings.gradle
+
 如果一个新的工程只包含一个Android app 那么settings.gradle 应该是这样的：
 ````
 include ':app'
 ```` 
-如果你的工程里只有一个app，那么settings.gradle文件可以不要。include':app'中的app指明你要构建的模块名，Android studio 默认的模块名是 app ，你可以把app目录的名字改掉，比如改成hello，那么这个时候，你就必须把settings.gradle中的 app也改成hello.这会是你非常有意义的一次尝试，因为有了这次尝试，以后你就可以按你所愿修改这个文件了。下面我们把`app`改成`guide`,再来看工程目录结构：
+如果你的工程里只有一个app，那么settings.gradle文件可以不要。
+include':app'中的app指明你要构建的模块名，Android studio 默认的模块名是app，
+你可以把app目录的名字改掉，比如改成hello，那么这个时候，你就必须把settings.gradle中的 app也改成hello.
+这会是你非常有意义的一次尝试，因为有了这次尝试，以后你就可以按你所愿修改这个文件了。
+下面我们把`app`改成`guide`,再来看工程目录结构：
+
  ![]( https://github.com/MrRobotter/AndroidGuide/raw/master/resource/image/guide.jpg )
+
  接下来我们就可以一次性构建多个app了
+
  第一步：在工程上右键，选择新建mudole
+
  第二步：成功了
+
  我们再看工程的样子：
+
 -------------------
 ### 使用Gradle签名打包
 
