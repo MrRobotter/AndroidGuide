@@ -25,6 +25,7 @@
 * [百度语音合成集成指南](http://joinyon.top/2018/09/05/%E7%99%BE%E5%BA%A6%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E9%9B%86%E6%88%90/)
 * [网易云信聊天实践](http://joinyon.top/2018/09/10/%E4%BD%BF%E7%94%A8%E4%BA%91%E4%BF%A1%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/)
 * [腾讯浏览服务(TBS)应用](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/x5%E5%86%85%E6%A0%B8%E6%B5%8F%E8%A7%88%E6%9C%8D%E5%8A%A1.md)
+* [支付SDK](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/Android%E6%94%AF%E4%BB%98SDK.md)
 ### 项目
 
 #### 乐跑圈
