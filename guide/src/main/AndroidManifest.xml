@@ -39,13 +39,31 @@
         <activity android:name=".net.VolleyActivity" />
         <activity android:name=".android.UI.MagicIndicatorActivity" />
         <activity android:name=".ad.RichEditActivity" />
-        <activity android:name=".GuideActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".GuideActivity"></activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <receiver
+            android:name=".notice.AutoNoticeReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.joinyon.androidguide.alarm.clock.everyday" />
             </intent-filter>
-        </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+
+                <data android:scheme="file" />
+            </intent-filter>
+
+        </receiver>
+
         <activity android:name=".android.UI.PhotoFlowActivity" />
         <activity android:name=".HRichEditorView.view.HRichEditorView" />
         <activity android:name=".HRichEditorView.view.LinkedActivity" />
@@ -55,11 +73,17 @@
         <activity android:name=".WordPressEditor.activity.EditorExampleActivity" />
         <activity
             android:name=".WordPressEditor.activity.MainExampleActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".WordPressEditor.legacy.EditLinkActivity" />
         <activity android:name=".HRichEditorView.HRichEditorActivity" />
         <activity android:name=".WordPressEditor.activity.MyEditActivity" />
-        <activity android:name=".android.WebActivity">
+        <activity android:name=".android.WebActivity" />
+        <activity android:name=".notice.AlarmActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
     </application>

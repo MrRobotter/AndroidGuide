@@ -14,6 +14,12 @@
 * [Gradle](http://joinyon.top/2018/06/11/GradleForAndroid/)
 * [Android studio Gradle详解](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/GradleScripts.md)
 * [多渠道打包](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85.md)
+* 四大组件
+	* [Activity]()
+	* [Service]()
+	* [Receiver]()
+	* [ConentProvider]()
+* 数据库开发
 
 #### 开发
 * [开发规范](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83.md)
