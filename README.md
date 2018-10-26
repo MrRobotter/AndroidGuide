@@ -17,7 +17,7 @@
 * 四大组件
 	* [Activity]()
 	* [Service]()
-	* [Receiver]()
+	* [Receiver](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/BroadcastReceiver.md)
 	* [ConentProvider]()
 * 数据库开发
 

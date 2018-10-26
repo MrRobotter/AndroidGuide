@@ -10,9 +10,11 @@ import android.widget.Toast;
 
 import com.joinyon.androidguide.HRichEditorView.HRichEditorActivity;
 import com.joinyon.androidguide.WordPressEditor.activity.MainExampleActivity;
+import com.joinyon.androidguide.android.NotifyActivity;
 import com.joinyon.androidguide.android.UI.MagicIndicatorActivity;
 import com.joinyon.androidguide.android.UI.PhotoFlowActivity;
 import com.joinyon.androidguide.net.VolleyActivity;
+import com.joinyon.androidguide.notice.AlarmActivity;
 import com.joinyon.androidguide.tt.BaiDuActivity;
 
 import java.util.Arrays;
@@ -22,7 +24,7 @@ import java.util.Map;
 
 public class GuideActivity extends AppCompatActivity implements GuideAdapter.OnItemClickListener {
     private RecyclerView recyclerView;
-    private String[] ITEMS = new String[]{"一个跑马灯广告的实现", "一款指示器", "富文本编辑器", "HRichEdit", "流布局", "Volley","百度语音"};
+    private String[] ITEMS = new String[]{"一个跑马灯广告的实现", "一款指示器", "富文本编辑器", "HRichEdit", "流布局", "Volley", "百度语音", "通知", "广播"};
     private List<String> itemList = Arrays.asList(ITEMS);
     private GuideAdapter adapter;
 
@@ -74,6 +76,14 @@ public class GuideActivity extends AppCompatActivity implements GuideAdapter.OnI
                 break;
             case 6:
                 intent = new Intent(GuideActivity.this, BaiDuActivity.class);
+                startActivity(intent);
+                break;
+            case 7:
+                intent = new Intent(GuideActivity.this, NotifyActivity.class);
+                startActivity(intent);
+                break;
+            case 8:
+                intent = new Intent(GuideActivity.this, AlarmActivity.class);
                 startActivity(intent);
                 break;
             default:
