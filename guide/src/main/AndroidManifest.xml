@@ -15,7 +15,6 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -30,8 +29,6 @@
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="${UMENG_CHANNEL_VALUE}" />
-        <!-- 这里改成对应build.gradle中的 productFlavors.all 对应的字符串 -->
-
         <activity
             android:name=".android.MainActivity"
             android:screenOrientation="portrait" />
@@ -43,7 +40,6 @@
         <activity android:name=".GuideActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -57,7 +53,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.ACTION_SHUTDOWN" />
@@ -68,7 +63,6 @@
 
                 <data android:scheme="file" />
             </intent-filter>
-
         </receiver>
 
         <activity android:name=".android.UI.PhotoFlowActivity" />
@@ -85,7 +79,7 @@
         <activity android:name=".HRichEditorView.HRichEditorActivity" />
         <activity android:name=".WordPressEditor.activity.MyEditActivity" />
         <activity android:name=".android.WebActivity" />
-        <activity android:name=".notice.AlarmActivity"></activity>
+        <activity android:name=".notice.AlarmActivity" />
 
         <service android:name=".service.AutoNoticeService" />
     </application>

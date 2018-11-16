@@ -13,6 +13,10 @@ android {
         manifestPlaceholders = [UMENG_CHANNEL_VALUE: "guide_manager_release"]
     }
 
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+        baseline file("lint-baseline.xml")
+    }
 
     signingConfigs {
         debug {
@@ -241,5 +245,4 @@ dependencies {
     compile 'com.umeng.sdk:analytics:7.5.0'
     implementation files('libs/tencentX5WebView.jar')
     implementation 'com.github.MrRobotter:CircularPercentRing:1.1'
-
 }
