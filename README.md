@@ -25,6 +25,7 @@
 * [开发规范](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83.md)
 * [开发遇到的问题](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98.md)
 * [一些控件](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E4%B8%80%E4%BA%9B%E6%8E%A7%E4%BB%B6.md)
+* [每天的记录](https://github.com/MrRobotter/AndroidGuide/blob/master/resource/Android/%E6%AF%8F%E5%A4%A9%E8%AE%B0%E7%82%B9%E4%B8%9C%E8%A5%BF.md)
 ### 框架
 
 ### 第三方
