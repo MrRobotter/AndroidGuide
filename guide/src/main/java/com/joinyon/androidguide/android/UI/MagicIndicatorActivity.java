@@ -37,7 +37,8 @@ import java.util.List;
  */
 
 public class MagicIndicatorActivity extends AppCompatActivity {
-    private static final String[] CHANNELS = new String[]{"CUPCAKE", "DONUT", "ECLAIR", "GINGERBREAD", "HONEYCOMB", "ICE_CREAM_SANDWICH", "JELLY_BEAN", "KITKAT", "LOLLIPOP", "M", "NOUGAT"};
+   // private static final String[] CHANNELS = new String[]{"CUPCAKE", "DONUT", "ECLAIR", "GINGERBREAD", "HONEYCOMB", "ICE_CREAM_SANDWICH", "JELLY_BEAN", "KITKAT", "LOLLIPOP", "M", "NOUGAT"};
+   private static final String[] CHANNELS = new String[]{"CUPCAKE", "DONUT"};
     private List<String> mDataList = Arrays.asList(CHANNELS);
     private ExamplePagerAdapter mExamplePagerAdapter = new ExamplePagerAdapter(mDataList);
 
